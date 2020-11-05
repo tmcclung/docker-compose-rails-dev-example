@@ -3,6 +3,7 @@ FROM ruby:2.2.6
 
 # 2: We'll set the application path as the working directory
 WORKDIR /usr/src/app
+COPY development-entrypoint .
 
 # 3: We'll set the working dir as HOME and add the app's binaries path to $PATH:
 ENV HOME=/usr/src/app PATH=/usr/src/app/bin:$PATH
