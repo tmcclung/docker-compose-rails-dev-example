@@ -4,6 +4,7 @@ FROM ruby:2.2.6-alpine
 
 # 2: We'll set the application path as the working directory
 WORKDIR /usr/src/app
+COPY development-entrypoint .
 
 # 3: We'll add the app's binaries path to $PATH, and set the environment name to 'production':
 ENV PATH=/usr/src/app/bin:$PATH RAILS_ENV=production RACK_ENV=production
@@ -24,6 +25,7 @@ RUN set -ex && apk add --no-cache libpq ca-certificates openssl
 # file changed and installing dependencies all over again - a must if your'e developing this
 # Dockerfile...
 ADD ./Gemfile* /usr/src/app/
+
 
 # 6.3: Install build dependencies AND install/build the app gems:
 RUN set -ex \
